@@ -32,16 +32,17 @@
               </ul>
 
             {% if user.is_authenticated %}
-               <div class="d-flex" >
-                    <p class="p-2" >Username: {{user.username}} </p>
-                    <button class="btn btn-danger" >log out</button>
+               <div class="d-flex align-items-center" >
+                    <p >Username: {{user.username}} </p>
+                     <a href="{% url 'djangoapp:logout' %}" ><button class="btn btn-danger" >log out</button></a> 
                 </div> 
             {% else %}
-                <form action="" class="form-inline my-2 my-lg-0">
+                <form method="post" class="form-inline my-2 my-lg-0">
                     <input type="text" class="form-control mr-sm-2" placeholder="Username"/>
                     <input type="text" class="form-control mr-sm-2" placeholder="Password"/>
-                    <button class="btn btn-primary my-2 my-sm-0"> Login</button>
-                    <button class="btn btn-outline-primary my-2 my-sm-0">Sign up</button>
+                    <button class="btn btn-primary my-2 my-sm-0" type="submit" formaction="{% url 'djangoapp:login' %}"> Login</button>
+                    <button class="btn btn-outline-primary my-2 my-sm-0" type="submit" formaction="{% url 'djangoapp:signup' %}" >Sign up</button>
+                    
                 </form>
             {% endif %}
 
